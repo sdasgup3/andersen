@@ -72,9 +72,11 @@ TEST(AndersTest, SparseBitVectorGraphTest)
 	EXPECT_EQ(node5->getNodeIndex(), 5u);
 	EXPECT_EQ(node6->getNodeIndex(), 6u);
 
+	/*
 	//        |-> 3 \
 	// 1 -> 2 |      -> 5 -> 6
 	//        |-> 4 /
+	*/
 	graph.insertEdge(1, 2);
 	graph.insertEdge(2, 3);
 	graph.insertEdge(2, 4);
@@ -125,11 +127,12 @@ class AndersPassTest: public testing::Test
 {
 private:
 	std::unique_ptr<Module> M;
+        LLVMContext C;
 protected:
 	Module* ParseAssembly(const char *Assembly)
 	{
 		SMDiagnostic Error;
-		M = parseAssemblyString(Assembly, Error, getGlobalContext());
+		M = parseAssemblyString(Assembly, Error, C);
 
 		std::string errMsg;
 		raw_string_ostream os(errMsg);

@@ -90,7 +90,7 @@ bool AndersenAAResult::pointsToConstantMemory(const MemoryLocation& loc, bool or
 	return true;
 }
 
-AndersenAAResult::AndersenAAResult(const Module& m, TargetLibraryInfo& tli): AAResultBase<AndersenAAResult>(tli), anders(m)
+AndersenAAResult::AndersenAAResult(const Module& m, TargetLibraryInfo& tli): AAResultBase<AndersenAAResult>(), TLI(tli), anders(m)
 {
 }
 

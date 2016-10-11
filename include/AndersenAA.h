@@ -12,6 +12,7 @@ class AndersenAAResult: public llvm::AAResultBase<AndersenAAResult>
 private:
 	friend llvm::AAResultBase<AndersenAAResult>;
 
+        const llvm::TargetLibraryInfo &TLI;
 	Andersen anders;
 	llvm::AliasResult andersenAlias(const llvm::Value*, const llvm::Value*);
 public:
